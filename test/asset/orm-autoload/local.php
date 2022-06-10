@@ -1,4 +1,8 @@
 <?php
+$driverClass = class_exists('Doctrine\DBAL\Driver\PDOSqlite\Driver') ?
+    'Doctrine\DBAL\Driver\PDOSqlite\Driver' :
+    'Doctrine\DBAL\Driver\PDO\Sqlite\Driver'
+;
 
 return [
     'api-tools-mvc-auth' => [
@@ -20,7 +24,7 @@ return [
     'doctrine' => [
         'connection' => [
             'orm_default' => [
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOSqlite\Driver',
+                'driverClass' => $driverClass,
                 'params' => [
                     'memory' => 'true',
                 ],
